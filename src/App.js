@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import data from "./data";
 import useLocalStorage from './hooks/useLocalStorage';
+import ConsumerWrapper from './components/ConsumerWrapper';
+
 
 // Components
-import Navigation from "./components/Navigation";
+import Navigation, {PureNavigation} from "./components/Navigation";
 import Products from "./components/Products";
 import ShoppingCart from "./components/ShoppingCart";
 
@@ -33,6 +35,7 @@ function App() {
       <ProductContext.Provider value={{ products, addItem }}>
         <CartContext.Provider value={{cart, removeItem}}>
           <Navigation />
+		  <ConsumerWrapper context = {CartContext} component = {PureNavigation}/>
 
           {/* Routes */}
           <Route exact path="/" component={Products} />

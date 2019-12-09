@@ -1,17 +1,31 @@
-import React, {useContext} from 'react';
-import { NavLink } from 'react-router-dom';
-import CartContext from '../contexts/CartContext';
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import CartContext from "../contexts/CartContext";
 
 const Navigation = () => {
-	const {cart} = useContext(CartContext);
-	return (
-		<div className="navigation">
-			<NavLink to="/">Products</NavLink>
-			<NavLink to="/cart">
-				Cart <span>{cart.length}</span>
-			</NavLink>
-		</div>
-	);
+  const { cart } = useContext(CartContext);
+  return (
+    <div className="navigation">
+      <NavLink to="/">Products</NavLink>
+      <NavLink to="/cart">
+        Cart <span>{cart.length}</span>
+      </NavLink>
+    </div>
+  );
+};
+
+export const PureNavigation = props => {
+  const {cart} = props.value;
+  console.log(cart);
+  
+  return (
+    <div className="navigation">
+      <NavLink to="/">Products</NavLink>
+      <NavLink to="/cart">
+        Cart <span>{cart.length}</span>
+      </NavLink>
+    </div>
+  );
 };
 
 export default Navigation;
